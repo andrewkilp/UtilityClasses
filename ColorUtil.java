@@ -35,7 +35,7 @@ public class ColorUtil {
                             throw new InputMismatchException();
                         String hexcode = String.format("%02X%02X%02X%n", red,green,blue);
                         System.out.printf("Hexcode: %s", hexcode);
-                        System.out.printf("INT value:%d%n", Integer.decode("0x"+hexcode));      
+                        System.out.printf("INT value:%d%n", Integer.decode("0x"+hexcode));     
                     } 
                     case "HEX" -> {
                         System.out.println("input an hex value");
@@ -76,12 +76,12 @@ public class ColorUtil {
      * @param rgb
      * @return
      */
-    public static String decodeRGBToHex(int[] rgb) {
-        if(rgb.length > 3) 
-            return null;
-        for(int i = 0 ; i<rgb.length;i++) {
+    public static String decodeRGBToHex(int[] rgb) throws InputMismatchException {
+        if(rgb.length > 3)
+            throw new InputMismatchException();
+        for(int i = 0 ; i<rgb.length;i++) { // checks if valid array
             if(rgb[i] >255)
-                return null;
+                throw new InputMismatchException();
         }
         return String.format("%02X%02X%02X", rgb[0],rgb[1],rgb[2]);
     }
@@ -98,12 +98,12 @@ public class ColorUtil {
      * @param rgb
      * @return
      */
-    public static int decodeRGBToInt(int[] rgb) {
-        if(rgb.length > 3) 
-            return 0;
+    public static int decodeRGBToInt(int[] rgb) throws InputMismatchException{
+        if(rgb.length > 3)
+            throw new InputMismatchException("array is to long");
         for(int i = 0 ; i<rgb.length;i++) {
             if(rgb[i] >255)
-                return 0;
+                throw new InputMismatchException("index" + i + "is greater than 255");
         }
         return  Integer.decode(String.format("%02X%02X%02X%n", rgb[0],rgb[1],rgb[2]));
     }
