@@ -5,7 +5,7 @@ public class ColorUtil {
      * this is the way to just use it in the terminal
      */
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in); 
         boolean valid = true;
         do {
             System.out.println("INT to decode an int to a hex Code, RGB to decode to INT value and HEX code, HEX to decode into a RGB value and a INT value, or END to stop");
@@ -79,7 +79,7 @@ public class ColorUtil {
     public static String decodeRGBToHex(int[] rgb) throws InputMismatchException {
         if(rgb.length > 3)
             throw new InputMismatchException();
-        for(int i = 0 ; i<rgb.length;i++) { // checks if valid array
+        for(int i = 0 ; i<rgb.length;i++) {
             if(rgb[i] >255)
                 throw new InputMismatchException();
         }
